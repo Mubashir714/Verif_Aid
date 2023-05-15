@@ -28,12 +28,12 @@ wwv_flow_imp.import_begin (
 end;
 /
  
-prompt APPLICATION 206858 - VerifAid
+prompt APPLICATION 206858 - EquiDonate
 --
 -- Application Export:
 --   Application:     206858
---   Name:            VerifAid
---   Date and Time:   19:04 Sunday May 14, 2023
+--   Name:            EquiDonate
+--   Date and Time:   07:28 Monday May 15, 2023
 --   Exported By:     MIANMUBASHIR105@GMAIL.COM
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -86,7 +86,7 @@ begin
 wwv_imp_workspace.create_flow(
  p_id=>wwv_flow.g_flow_id
 ,p_owner=>nvl(wwv_flow_application_install.get_schema,'WKSP_NVENT')
-,p_name=>nvl(wwv_flow_application_install.get_application_name,'VerifAid')
+,p_name=>nvl(wwv_flow_application_install.get_application_name,'EquiDonate')
 ,p_alias=>nvl(wwv_flow_application_install.get_application_alias,'VERIFAID1')
 ,p_page_view_logging=>'YES'
 ,p_page_protection_enabled_y_n=>'Y'
@@ -118,8 +118,8 @@ wwv_imp_workspace.create_flow(
 ,p_auto_time_zone=>'N'
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'VerifAid'
-,p_last_updated_by=>'INAMUL09REHMAN@GMAIL.COM'
-,p_last_upd_yyyymmddhh24miss=>'20230514171338'
+,p_last_updated_by=>'JOSEROCA99@HOTMAIL.COM'
+,p_last_upd_yyyymmddhh24miss=>'20230515071341'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>11
 ,p_print_server_type=>'INSTANCE'
@@ -18721,39 +18721,40 @@ wwv_flow_imp_page.create_page(
 ,p_page_template_options=>'#DEFAULT#'
 ,p_protection_level=>'C'
 ,p_page_component_map=>'04'
-,p_last_updated_by=>'MIANMUBASHIR105@GMAIL.COM'
-,p_last_upd_yyyymmddhh24miss=>'20230514090207'
+,p_last_updated_by=>'JOSEROCA99@HOTMAIL.COM'
+,p_last_upd_yyyymmddhh24miss=>'20230515030315'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(11940751787462266561)
-,p_plug_name=>'CNIC'
+,p_plug_name=>'NGO Location'
 ,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
 ,p_escape_on_http_output=>'Y'
 ,p_plug_template=>wwv_flow_imp.id(11940558686638266462)
-,p_plug_display_sequence=>10
+,p_plug_display_sequence=>20
+,p_plug_new_grid_row=>false
 ,p_plug_source_type=>'NATIVE_JET_CHART'
 );
 wwv_flow_imp_page.create_jet_chart(
  p_id=>wwv_flow_imp.id(11575056511269596015)
 ,p_region_id=>wwv_flow_imp.id(11940751787462266561)
-,p_chart_type=>'bar'
+,p_chart_type=>'pie'
 ,p_height=>'400'
 ,p_animation_on_display=>'auto'
 ,p_animation_on_data_change=>'auto'
-,p_orientation=>'vertical'
 ,p_data_cursor=>'auto'
 ,p_data_cursor_behavior=>'auto'
+,p_hide_and_show_behavior=>'withRescale'
 ,p_hover_behavior=>'dim'
-,p_stack=>'off'
-,p_connect_nulls=>'Y'
-,p_sorting=>'label-asc'
-,p_fill_multi_series_gaps=>true
-,p_zoom_and_scroll=>'off'
+,p_value_format_type=>'decimal'
+,p_value_decimal_places=>0
+,p_value_format_scaling=>'none'
 ,p_tooltip_rendered=>'Y'
 ,p_show_series_name=>true
-,p_show_group_name=>true
 ,p_show_value=>true
-,p_legend_rendered=>'off'
+,p_legend_rendered=>'on'
+,p_legend_position=>'auto'
+,p_pie_other_threshold=>0
+,p_pie_selection_effect=>'highlight'
 );
 wwv_flow_imp_page.create_jet_chart_series(
  p_id=>wwv_flow_imp.id(11575056629639596016)
@@ -18763,47 +18764,18 @@ wwv_flow_imp_page.create_jet_chart_series(
 ,p_data_source_type=>'TABLE'
 ,p_query_table=>'AID1'
 ,p_include_rowid_column=>false
-,p_items_value_column_name=>'CNIC'
-,p_items_label_column_name=>'CNIC'
-,p_assigned_to_y2=>'off'
-,p_items_label_rendered=>false
-);
-wwv_flow_imp_page.create_jet_chart_axis(
- p_id=>wwv_flow_imp.id(11575056754153596017)
-,p_chart_id=>wwv_flow_imp.id(11575056511269596015)
-,p_axis=>'x'
-,p_is_rendered=>'on'
-,p_format_scaling=>'auto'
-,p_scaling=>'linear'
-,p_baseline_scaling=>'zero'
-,p_major_tick_rendered=>'on'
-,p_minor_tick_rendered=>'off'
-,p_tick_label_rendered=>'on'
-,p_tick_label_rotation=>'auto'
-,p_tick_label_position=>'outside'
-);
-wwv_flow_imp_page.create_jet_chart_axis(
- p_id=>wwv_flow_imp.id(11575056919907596018)
-,p_chart_id=>wwv_flow_imp.id(11575056511269596015)
-,p_axis=>'y'
-,p_is_rendered=>'on'
-,p_format_type=>'decimal'
-,p_decimal_places=>0
-,p_format_scaling=>'none'
-,p_scaling=>'linear'
-,p_baseline_scaling=>'zero'
-,p_position=>'auto'
-,p_major_tick_rendered=>'on'
-,p_minor_tick_rendered=>'off'
-,p_tick_label_rendered=>'on'
+,p_items_label_column_name=>'ADDRESS'
+,p_aggregate_function=>'COUNT'
+,p_items_label_rendered=>true
+,p_items_label_position=>'auto'
+,p_items_label_display_as=>'LABEL'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(11940754496480266563)
-,p_plug_name=>'Income'
+,p_plug_name=>'Recipient Income'
 ,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
 ,p_plug_template=>wwv_flow_imp.id(11940558686638266462)
-,p_plug_display_sequence=>20
-,p_plug_new_grid_row=>false
+,p_plug_display_sequence=>30
 ,p_plug_source_type=>'NATIVE_JET_CHART'
 );
 wwv_flow_imp_page.create_jet_chart(
@@ -18903,47 +18875,33 @@ wwv_flow_imp_page.create_jet_chart_axis(
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(11940757176146266564)
-,p_plug_name=>'Members'
+,p_plug_name=>'Recipient Family Members'
 ,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
 ,p_plug_template=>wwv_flow_imp.id(11940558686638266462)
-,p_plug_display_sequence=>30
+,p_plug_display_sequence=>40
+,p_plug_new_grid_row=>false
 ,p_plug_source_type=>'NATIVE_JET_CHART'
 );
 wwv_flow_imp_page.create_jet_chart(
  p_id=>wwv_flow_imp.id(11940757555850266565)
 ,p_region_id=>wwv_flow_imp.id(11940757176146266564)
-,p_chart_type=>'pie'
+,p_chart_type=>'bar'
 ,p_animation_on_display=>'auto'
 ,p_animation_on_data_change=>'auto'
-,p_hide_and_show_behavior=>'withRescale'
+,p_orientation=>'vertical'
+,p_data_cursor=>'auto'
+,p_data_cursor_behavior=>'auto'
 ,p_hover_behavior=>'dim'
 ,p_stack=>'off'
-,p_stack_label=>'off'
 ,p_connect_nulls=>'Y'
-,p_value_position=>'auto'
-,p_value_format_type=>'decimal'
-,p_value_decimal_places=>0
-,p_value_format_scaling=>'auto'
 ,p_sorting=>'label-asc'
 ,p_fill_multi_series_gaps=>true
+,p_zoom_and_scroll=>'off'
 ,p_tooltip_rendered=>'Y'
 ,p_show_series_name=>true
 ,p_show_group_name=>true
 ,p_show_value=>true
-,p_show_label=>true
-,p_show_row=>true
-,p_show_start=>true
-,p_show_end=>true
-,p_show_progress=>true
-,p_show_baseline=>true
 ,p_legend_rendered=>'off'
-,p_legend_position=>'auto'
-,p_overview_rendered=>'off'
-,p_horizontal_grid=>'auto'
-,p_vertical_grid=>'auto'
-,p_gauge_orientation=>'circular'
-,p_gauge_plot_area=>'on'
-,p_show_gauge_value=>true
 );
 wwv_flow_imp_page.create_jet_chart_series(
  p_id=>wwv_flow_imp.id(11940758052407266565)
@@ -18955,60 +18913,74 @@ wwv_flow_imp_page.create_jet_chart_series(
 'select MEMBERS, count(*) value',
 'from AID1',
 'group by MEMBERS',
-'order by 2 desc'))
+'order by MEMBERS'))
 ,p_max_row_count=>20
-,p_series_type=>'pie'
 ,p_items_value_column_name=>'VALUE'
 ,p_items_label_column_name=>'MEMBERS'
-,p_items_label_rendered=>true
-,p_items_label_position=>'auto'
-,p_items_label_display_as=>'LABEL'
-,p_threshold_display=>'onIndicator'
+,p_assigned_to_y2=>'off'
+,p_items_label_rendered=>false
 ,p_link_target=>'f?p=&APP_ID.:4:&APP_SESSION.::&DEBUG.:RR:IR_MEMBERS:\&MEMBERS.\'
 ,p_link_target_type=>'REDIRECT_PAGE'
 );
+wwv_flow_imp_page.create_jet_chart_axis(
+ p_id=>wwv_flow_imp.id(12815646406540611309)
+,p_chart_id=>wwv_flow_imp.id(11940757555850266565)
+,p_axis=>'x'
+,p_is_rendered=>'on'
+,p_format_scaling=>'auto'
+,p_scaling=>'linear'
+,p_baseline_scaling=>'zero'
+,p_major_tick_rendered=>'on'
+,p_minor_tick_rendered=>'off'
+,p_tick_label_rendered=>'on'
+,p_tick_label_rotation=>'auto'
+,p_tick_label_position=>'outside'
+);
+wwv_flow_imp_page.create_jet_chart_axis(
+ p_id=>wwv_flow_imp.id(12815646553805611310)
+,p_chart_id=>wwv_flow_imp.id(11940757555850266565)
+,p_axis=>'y'
+,p_is_rendered=>'on'
+,p_format_type=>'decimal'
+,p_decimal_places=>0
+,p_format_scaling=>'none'
+,p_scaling=>'linear'
+,p_baseline_scaling=>'zero'
+,p_step=>1
+,p_position=>'auto'
+,p_major_tick_rendered=>'on'
+,p_minor_tick_rendered=>'off'
+,p_tick_label_rendered=>'on'
+);
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(11940758609658266565)
-,p_plug_name=>'Mobile No'
+,p_plug_name=>'NGO Donations'
 ,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
 ,p_plug_template=>wwv_flow_imp.id(11940558686638266462)
-,p_plug_display_sequence=>40
-,p_plug_new_grid_row=>false
+,p_plug_display_sequence=>10
 ,p_plug_source_type=>'NATIVE_JET_CHART'
 );
 wwv_flow_imp_page.create_jet_chart(
  p_id=>wwv_flow_imp.id(11940759065009266565)
 ,p_region_id=>wwv_flow_imp.id(11940758609658266565)
-,p_chart_type=>'bar'
+,p_chart_type=>'pie'
+,p_height=>'400'
 ,p_animation_on_display=>'auto'
 ,p_animation_on_data_change=>'auto'
-,p_orientation=>'vertical'
+,p_data_cursor=>'auto'
+,p_data_cursor_behavior=>'auto'
 ,p_hide_and_show_behavior=>'withRescale'
 ,p_hover_behavior=>'dim'
-,p_stack=>'off'
-,p_stack_label=>'off'
-,p_connect_nulls=>'Y'
-,p_value_position=>'auto'
-,p_sorting=>'label-asc'
-,p_fill_multi_series_gaps=>true
+,p_value_format_type=>'decimal'
+,p_value_decimal_places=>0
+,p_value_format_scaling=>'none'
 ,p_tooltip_rendered=>'Y'
 ,p_show_series_name=>true
-,p_show_group_name=>true
 ,p_show_value=>true
-,p_show_label=>true
-,p_show_row=>true
-,p_show_start=>true
-,p_show_end=>true
-,p_show_progress=>true
-,p_show_baseline=>true
-,p_legend_rendered=>'off'
+,p_legend_rendered=>'on'
 ,p_legend_position=>'auto'
-,p_overview_rendered=>'off'
-,p_horizontal_grid=>'auto'
-,p_vertical_grid=>'auto'
-,p_gauge_orientation=>'circular'
-,p_gauge_plot_area=>'on'
-,p_show_gauge_value=>true
+,p_pie_other_threshold=>0
+,p_pie_selection_effect=>'highlight'
 );
 wwv_flow_imp_page.create_jet_chart_series(
  p_id=>wwv_flow_imp.id(11940760706032266566)
@@ -19017,59 +18989,18 @@ wwv_flow_imp_page.create_jet_chart_series(
 ,p_name=>'Series 1'
 ,p_data_source_type=>'SQL'
 ,p_data_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'select MOBILE_NO, count(*) value',
-'from AID1',
-'group by MOBILE_NO',
-'order by 2 desc'))
+'select NGO.NAME AS NGO, COUNT(*)',
+'  from DONATION',
+'  JOIN NGO ON DONATION.NGO_ID=NGO.ID',
+'  GROUP BY NGO.NAME'))
 ,p_max_row_count=>20
-,p_series_type=>'bar'
-,p_items_value_column_name=>'VALUE'
-,p_items_label_column_name=>'MOBILE_NO'
-,p_items_label_rendered=>false
+,p_items_value_column_name=>'COUNT(*)'
+,p_items_label_column_name=>'NGO'
+,p_items_label_rendered=>true
 ,p_items_label_position=>'auto'
-,p_threshold_display=>'onIndicator'
+,p_items_label_display_as=>'LABEL'
 ,p_link_target=>'f?p=&APP_ID.:4:&APP_SESSION.::&DEBUG.:RR:IR_MOBILE_NO:\&MOBILE_NO.\'
 ,p_link_target_type=>'REDIRECT_PAGE'
-);
-wwv_flow_imp_page.create_jet_chart_axis(
- p_id=>wwv_flow_imp.id(11940759596256266566)
-,p_chart_id=>wwv_flow_imp.id(11940759065009266565)
-,p_axis=>'x'
-,p_is_rendered=>'on'
-,p_baseline_scaling=>'zero'
-,p_major_tick_rendered=>'auto'
-,p_minor_tick_rendered=>'auto'
-,p_tick_label_rendered=>'on'
-,p_zoom_order_seconds=>false
-,p_zoom_order_minutes=>false
-,p_zoom_order_hours=>false
-,p_zoom_order_days=>false
-,p_zoom_order_weeks=>false
-,p_zoom_order_months=>false
-,p_zoom_order_quarters=>false
-,p_zoom_order_years=>false
-);
-wwv_flow_imp_page.create_jet_chart_axis(
- p_id=>wwv_flow_imp.id(11940760149402266566)
-,p_chart_id=>wwv_flow_imp.id(11940759065009266565)
-,p_axis=>'y'
-,p_is_rendered=>'on'
-,p_format_type=>'decimal'
-,p_decimal_places=>0
-,p_format_scaling=>'auto'
-,p_baseline_scaling=>'zero'
-,p_position=>'auto'
-,p_major_tick_rendered=>'auto'
-,p_minor_tick_rendered=>'auto'
-,p_tick_label_rendered=>'on'
-,p_zoom_order_seconds=>false
-,p_zoom_order_minutes=>false
-,p_zoom_order_hours=>false
-,p_zoom_order_days=>false
-,p_zoom_order_weeks=>false
-,p_zoom_order_months=>false
-,p_zoom_order_quarters=>false
-,p_zoom_order_years=>false
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(11940761416773266567)
@@ -20558,7 +20489,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'18'
 ,p_last_updated_by=>'JOSEROCA99@HOTMAIL.COM'
-,p_last_upd_yyyymmddhh24miss=>'20230513234609'
+,p_last_upd_yyyymmddhh24miss=>'20230515070759'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(12810495253574813140)
@@ -20568,7 +20499,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_display_sequence=>10
 ,p_query_type=>'SQL'
 ,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'SELECT DONATION.DATE_MONTH,',
+'SELECT DONATION.DATE_RECEIVED,',
 '        AID1.CNIC AS CNIC,',
 '        AID1.NAME AS PERSON_NAME, ',
 '        NGO.NAME AS NGO_NAME, ',
@@ -20598,17 +20529,6 @@ wwv_flow_imp_page.create_worksheet(
 ,p_detail_link_text=>'<span role="img" aria-label="Edit"><span class="fa fa-edit" aria-hidden="true" title="Edit"></span></span>'
 ,p_owner=>'JOSEROCA99@HOTMAIL.COM'
 ,p_internal_uid=>12810495317927813140
-);
-wwv_flow_imp_page.create_worksheet_column(
- p_id=>wwv_flow_imp.id(12810496983039813142)
-,p_db_column_name=>'DATE_MONTH'
-,p_display_order=>4
-,p_column_identifier=>'D'
-,p_column_label=>'Date Month'
-,p_column_type=>'DATE'
-,p_heading_alignment=>'LEFT'
-,p_tz_dependent=>'N'
-,p_use_as_row_header=>'N'
 );
 wwv_flow_imp_page.create_worksheet_column(
  p_id=>wwv_flow_imp.id(12492361837455093544)
@@ -20661,6 +20581,17 @@ wwv_flow_imp_page.create_worksheet_column(
 ,p_column_alignment=>'RIGHT'
 ,p_use_as_row_header=>'N'
 );
+wwv_flow_imp_page.create_worksheet_column(
+ p_id=>wwv_flow_imp.id(12815646688930611311)
+,p_db_column_name=>'DATE_RECEIVED'
+,p_display_order=>64
+,p_column_identifier=>'K'
+,p_column_label=>'Date Received'
+,p_column_type=>'DATE'
+,p_heading_alignment=>'LEFT'
+,p_tz_dependent=>'N'
+,p_use_as_row_header=>'N'
+);
 wwv_flow_imp_page.create_worksheet_rpt(
  p_id=>wwv_flow_imp.id(12811797332675310658)
 ,p_application_user=>'APXWS_DEFAULT'
@@ -20668,7 +20599,7 @@ wwv_flow_imp_page.create_worksheet_rpt(
 ,p_report_alias=>'128117974'
 ,p_status=>'PUBLIC'
 ,p_is_default=>'Y'
-,p_report_columns=>'QUANTITY:DATE_MONTH:PERSON_NAME:NGO_NAME:ITEM_NAME'
+,p_report_columns=>'QUANTITY:PERSON_NAME:NGO_NAME:ITEM_NAME'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(12810499995911813144)
@@ -20732,7 +20663,7 @@ wwv_flow_imp_page.create_page(
 ,p_protection_level=>'C'
 ,p_page_component_map=>'02'
 ,p_last_updated_by=>'JOSEROCA99@HOTMAIL.COM'
-,p_last_upd_yyyymmddhh24miss=>'20230513235158'
+,p_last_upd_yyyymmddhh24miss=>'20230515071341'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(12810485038298813132)
@@ -20900,17 +20831,16 @@ wwv_flow_imp_page.create_page_item(
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(12810487500859813135)
-,p_name=>'P10_DATE_MONTH'
+,p_name=>'P10_DATE_RECEIVED'
 ,p_source_data_type=>'DATE'
 ,p_item_sequence=>20
 ,p_item_plug_id=>wwv_flow_imp.id(12810485038298813132)
 ,p_item_source_plug_id=>wwv_flow_imp.id(12810485038298813132)
-,p_prompt=>'Date Month'
-,p_source=>'DATE_MONTH'
+,p_prompt=>'Date'
+,p_source=>'DATE_RECEIVED'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_DATE_PICKER_APEX'
 ,p_cSize=>32
-,p_cMaxlength=>255
 ,p_field_template=>wwv_flow_imp.id(11940629337294266495)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_is_persistent=>'N'
