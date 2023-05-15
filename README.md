@@ -26,17 +26,27 @@ We have an easy and convenient way to make this possible.
 The EquiDonate app will make every NGO take all data of their needy person and take a decision to give them a donation or not by verifying their information from NADRA.
  
  The main purpose is Unlocking the Power of Equality in Giving: Ensuring Fair, equitably and Just Opportunities for Every needy person
-#Wroking
+# Wroking
 ·        We use Oracle Apex because it is easy to showcase our data in low code. Data can be presented in charts graphs and such as many          other awesome features.
 ·        First we collected all data from NGOs as well as needy people.
 ·        Verify the data that the person is really needed or not.
 ·        Our app presents a graph that shows the income even the family member of that person.
 ·        One form for the donation which can be used by NGOs in which NGOs will enter the detail of the person who takes a donation from that NGO. So this will be helpful for other NGOs able to check the details of that person this person already take a donation from another NGO.
+# Dashboard
+![image](https://github.com/Mubashir714/Verif_Aid/assets/115402129/05478a25-4ec1-43ad-9805-f169047d2110)
+
 
 # Workflow
 So, in our Oracle Apex application, we have one table for personal details like CNIC, ADDRESS, NAME, INCMOE, etc. In which we check whether a person deserves a donation by checking his income. So we generate checks using a SQL query on income. We also display a graph of a person's income on the dashboard.
  
 Next, we have a second table for NGOs, in which we include the NGO's name, address, the total amount they have to donate, details of the items they donate, etc. So in this, we display the NGO donation graph on the dashboard.
+
+ # Receipent
+ ![image](https://github.com/Mubashir714/Verif_Aid/assets/115402129/2f39c5d2-be51-4e97-ab22-b004a6a7c5b4)
+
+# NGO
+![image](https://github.com/Mubashir714/Verif_Aid/assets/115402129/55f0218c-8072-4957-90ce-abbc719286e6)
+
 
 # Future goal
 1.  But then we also think that if a needy person has taken three sacks of flour, which have run out because there are more people in his household if he needs flour again, so here we need to determine a period for which these three bags of flour are being given to him for one month. Next month, it will be given again.
