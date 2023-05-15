@@ -1,4 +1,3 @@
-# Verif_Aid
 # NGO Aid Web Application
 
 This web application allows NGOs to individuals who have received aid or donations. Thye can be searched by name or ID number to check whether a person is eligible to receive aid or whether they have already received aid.
